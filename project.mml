@@ -630,10 +630,10 @@ Layer:
           tags->'shelter' AS shelter,
           way,
           name,
-          COALESCE(
+          COALESCE( -- order is important here
             'aeroway_' || aeroway,
             'tourism_' || tourism,
-            'amenity_' || amenity,
+            'amenity_' || CASE WHEN amenity != 'fuel' THEN amenity ELSE NULL END,
             'shop_' || shop,
             'emergency_' || CASE WHEN tags->'emergency' IS NOT NULL then tags->'emergency' ELSE NULL END,
             'healthcare_' || CASE WHEN tags->'healthcare' IN ('clinic', 'hospital') THEN tags->'healthcare' ELSE NULL END,
@@ -736,10 +736,10 @@ Layer:
           tags->'shelter' AS shelter,
           way,
           name,
-          COALESCE(
+          COALESCE( -- order is important here
             'aeroway_' || aeroway,
             'tourism_' || tourism,
-            'amenity_' || amenity,
+            'amenity_' || CASE WHEN amenity != 'fuel' THEN amenity ELSE NULL END,
             'shop_' || shop,
             'emergency_' || CASE WHEN tags->'emergency' IS NOT NULL then tags->'emergency' ELSE NULL END,
             'healthcare_' || CASE WHEN tags->'healthcare' IN ('clinic', 'hospital') THEN tags->'healthcare' ELSE NULL END,
@@ -886,10 +886,10 @@ Layer:
             tags->'shelter' AS shelter,
             way,
             name,
-            COALESCE(
+            COALESCE( -- order is important here
               'aeroway_' || aeroway,
               'tourism_' || tourism,
-              'amenity_' || amenity,
+              'amenity_' || CASE WHEN amenity != 'fuel' THEN amenity ELSE NULL END,
               'shop_' || shop,
               'emergency_' || CASE WHEN tags->'emergency' IS NOT NULL then tags->'emergency' ELSE NULL END,
               'healthcare_' || CASE WHEN tags->'healthcare' IN ('clinic', 'hospital') THEN tags->'healthcare' ELSE NULL END,
@@ -1008,10 +1008,10 @@ Layer:
             tags->'shelter' AS shelter,
             way,
             name,
-            COALESCE(
+            COALESCE( -- order is important here
               'aeroway_' || aeroway,
               'tourism_' || tourism,
-              'amenity_' || amenity,
+              'amenity_' || CASE WHEN amenity != 'fuel' THEN amenity ELSE NULL END,
               'shop_' || shop,
               'emergency_' || CASE WHEN tags->'emergency' IS NOT NULL then tags->'emergency' ELSE NULL END,
               'healthcare_' || CASE WHEN tags->'healthcare' IN ('clinic', 'hospital') THEN tags->'healthcare' ELSE NULL END,
