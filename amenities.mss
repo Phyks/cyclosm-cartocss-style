@@ -552,6 +552,7 @@
   [feature = 'amenity_restaurant'][zoom >= 16],
   [feature = 'shop_bakery'][zoom >= 16],
   [feature = 'shop_convenience'][zoom >= 16],
+  [feature = 'shop_convenience;gas'][zoom >= 16],
   [feature = 'shop_greengrocer'][zoom >= 16],
   [feature = 'shop_pastry'][zoom >= 16],
   {
@@ -570,6 +571,7 @@
 		}
 		[feature = 'shop_bakery'],
 		[feature = 'shop_convenience'],
+		[feature = 'shop_convenience;gas'],
 		[feature = 'shop_greengrocer'],
 		[feature = 'shop_pastry'] {
 			marker-fill: @shop-icon;
@@ -604,7 +606,8 @@
     [feature = 'shop_bakery'][zoom >= 16] {
       marker-file: url('symbols/openstreetmap-carto/shop/bakery.svg');
     }
-    [feature = 'shop_convenience'][zoom >= 16] {
+    [feature = 'shop_convenience'][zoom >= 16],
+    [feature = 'shop_convenience;gas'][zoom >= 16] {
       marker-file: url('symbols/openstreetmap-carto/shop/convenience.svg');
     }
     [feature = 'shop_greengrocer'][zoom >= 16] {
@@ -690,6 +693,7 @@
   [feature = 'shop_bicycle'][zoom >= 16],
   [feature = 'shop_bakery'][zoom >= 18],
   [feature = 'shop_convenience'][zoom >= 18],
+  [feature = 'shop_convenience;gas'][zoom >= 18],
   [feature = 'shop_greengrocer'][zoom >= 18],
   [feature = 'shop_pastry'][zoom >= 18] {
 		[way_pixels > 3000][zoom >= 17],
