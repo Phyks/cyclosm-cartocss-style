@@ -610,6 +610,9 @@
     [feature = 'shop_convenience;gas'][zoom >= 16] {
       marker-file: url('symbols/openstreetmap-carto/shop/convenience.svg');
     }
+    [feature = 'shop_convenience;gas'][compressed_air = 'yes'][zoom >= 16] {
+      marker-file: url('symbols/shop/convenience_air.svg');
+    }
     [feature = 'shop_greengrocer'][zoom >= 16] {
       marker-file: url('symbols/openstreetmap-carto/shop/greengrocer.svg');
     }
