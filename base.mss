@@ -18,7 +18,8 @@
 
 #landuse_gen0[zoom>3][zoom<=9],
 #landuse_gen1[zoom>9][zoom<=12],
-#landuse[zoom>12] {
+#landuse[zoom>12],
+#landuse_over_hillshade[zoom>12] {
   [type='cemetery']      { polygon-fill: @cemetery; }
   [type='college']       { polygon-fill: @school; }
   [type='commercial']    { polygon-fill: @industrial; }
@@ -60,6 +61,23 @@
   }
   [type='university']    { polygon-fill: @school; }
   [type='wood']          { polygon-fill: @wooded; }
+}
+
+#landuse_over_hillshade {
+  polygon-comp-op: soft-light;
+  polygon-opacity: 0.5;
+}
+
+#hillshade5000, #hillshade1000, #hillshade500 {
+  raster-opacity: 0.9;
+  raster-scaling: bilinear;
+  raster-comp-op: grain-merge;
+}
+
+#hillshade90 {
+  raster-opacity: 0.83;
+  raster-scaling: bilinear;
+  raster-comp-op: grain-merge;
 }
 
 #landuse_overlays[type='nature_reserve'][zoom>6] {
