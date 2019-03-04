@@ -115,7 +115,7 @@ Layer:
   <<: *extents
   Datasource:
     type: gdal
-    file: hgt/hillshade-5000.tif
+    file: dem/hillshade-5000.tif
     format: tiff
   properties:
     maxzoom: 4
@@ -123,7 +123,7 @@ Layer:
   <<: *extents
   Datasource:
     type: gdal
-    file: hgt/hillshade-1000.tif
+    file: dem/hillshade-1000.tif
     format: tiff
   properties:
     minzoom: 5
@@ -132,7 +132,7 @@ Layer:
   <<: *extents
   Datasource:
     type: gdal
-    file: hgt/hillshade-500.tif
+    file: dem/hillshade-500.tif
     format: tiff
   properties:
     minzoom: 8
@@ -141,7 +141,7 @@ Layer:
   <<: *extents
   Datasource:
     type: gdal
-    file: hgt/hillshade-90.tif
+    file: dem/hillshade-90.tif
     format: tiff
   properties:
     minzoom: 9
@@ -333,6 +333,70 @@ Layer:
   geometry: linestring
   properties:
     minzoom: 11
+- id: contours100
+  class: contours
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    dbname: "contours"
+    table: |-
+      (
+        SELECT
+          way, ele
+        FROM planet_osm_line
+        WHERE ele IS NOT NULL AND ele % 100 = 0
+      ) AS data
+  geometry: line
+  properties:
+    minzoom: 11
+- id: contours50
+  class: contours
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    dbname: "contours"
+    table: |-
+      (
+        SELECT
+          way, ele
+        FROM planet_osm_line
+        WHERE ele IS NOT NULL AND ele % 100 != 0 AND ele % 50 = 0
+      ) AS data
+  geometry: line
+  properties:
+    minzoom: 11
+- id: contours20
+  class: contours
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    dbname: "contours"
+    table: |-
+      (
+        SELECT
+          way, ele
+        FROM planet_osm_line
+        WHERE ele IS NOT NULL AND ele % 100 != 0 AND ele % 20 = 0
+      ) AS data
+  geometry: line
+  properties:
+    minzoom: 12
+- id: contours10
+  class: contours
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    dbname: "contours"
+    table: |-
+      (
+        SELECT
+          way, ele
+        FROM planet_osm_line
+        WHERE ele IS NOT NULL AND ele % 50 != 0 AND ele % 10 = 0
+      ) AS data
+  geometry: line
+  properties:
+    minzoom: 13
 - id: turning_circle_case
   <<: *extents
   Datasource:
