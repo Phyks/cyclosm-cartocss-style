@@ -160,6 +160,12 @@ Layer:
   geometry: polygon
   properties:
     minzoom: 13
+- id: hillshade
+  <<: *extents
+  Datasource:
+    type: gdal
+    file: /home/phyks/tmp/dem/hillshade.vrt
+  geometry: raster
 #- id: hillshade5000
 #  <<: *extents
 #  Datasource:
